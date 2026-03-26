@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Lê Tấn Lộc</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-ink: #0f172a;
+            --bg-deep: #1e293b;
+            --paper: #f8fafc;
+            --card: rgba(255, 255, 255, 0.78);
+            --text-main: #0b1120;
+            --text-soft: #334155;
+            --accent: #f97316;
+            --accent-2: #06b6d4;
+            --line: rgba(15, 23, 42, 0.1);
+            --shadow-lg: 0 24px 50px rgba(15, 23, 42, 0.22);
+        }
+
+        body {
+            font-family: "Be Vietnam Pro", "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at 10% 15%, rgba(249, 115, 22, 0.24), transparent 34%),
+                radial-gradient(circle at 85% 25%, rgba(6, 182, 212, 0.2), transparent 28%),
+                linear-gradient(140deg, var(--bg-ink), var(--bg-deep));
+            min-height: 100vh;
+            padding: 28px 18px;
+            color: var(--text-main);
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: liftIn 0.7s ease-out;
+        }
+
+        .hero {
+            padding: 48px 44px 34px;
+            background:
+                linear-gradient(120deg, rgba(249, 115, 22, 0.2), rgba(6, 182, 212, 0.16)),
+                #ffffff;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.06);
+            color: var(--text-soft);
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            margin-bottom: 18px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        }
+
+        h1 {
+            font-size: clamp(30px, 6vw, 54px);
+            line-height: 1.06;
+            letter-spacing: -0.8px;
+            margin-bottom: 14px;
+        }
+
+        .lead {
+            max-width: 720px;
+            color: var(--text-soft);
+            line-height: 1.75;
+            font-size: 16px;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .info-card {
+            padding: 16px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(15, 23, 42, 0.07);
+        }
+
+        .info-card span {
+            display: block;
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .info-card strong {
+            color: var(--text-main);
+            font-size: 16px;
+        }
+
+        .content {
+            padding: 34px 44px 42px;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 24px;
+        }
+
+        .panel {
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .panel h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+
+        .panel p {
+            color: var(--text-soft);
+            line-height: 1.8;
+        }
+
+        .skills {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(15, 23, 42, 0.14);
+            background: #f8fafc;
+            color: #1e293b;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .timeline {
+            list-style: none;
+            margin-top: 14px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .timeline li {
+            position: relative;
+            padding-left: 18px;
+            color: var(--text-soft);
+            line-height: 1.65;
+        }
+
+        .timeline li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        }
+
+        .side-stack {
+            display: grid;
+            gap: 16px;
+        }
+
+        .quote {
+            margin-top: 12px;
+            padding: 13px 16px;
+            border-left: 4px solid var(--accent);
+            background: #fff7ed;
+            color: #9a3412;
+            border-radius: 8px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .contacts {
+            margin-top: 12px;
+            list-style: none;
+            display: grid;
+            gap: 10px;
+            color: var(--text-soft);
+        }
+
+        .contacts li {
+            padding-bottom: 8px;
+            border-bottom: 1px dashed rgba(15, 23, 42, 0.12);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 12px 22px;
+            background: linear-gradient(95deg, var(--accent), #fb923c);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(249, 115, 22, 0.35);
+        }
+
+        @keyframes liftIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .hero,
+            .content {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <div class="tag">
+                <span class="dot"></span>
+                Student Developer Profile
+            </div>
+            <h1>Lê Tấn Lộc</h1>
+            <p class="lead">
+                Mình là sinh viên Công nghệ thông tin tại HUTECH với định hướng phát triển thành Full-Stack Developer.
+                Mình yêu thích việc biến các ý tưởng thành sản phẩm thực tế, ưu tiên trải nghiệm người dùng,
+                hiệu năng ổn định và kiến trúc mã nguồn dễ mở rộng.
+            </p>
+            <div class="info">
+                <div class="info-card">
+                    <span>MSSV</span>
+                    <strong>2280601808</strong>
+                </div>
+                <div class="info-card">
+                    <span>Trường</span>
+                    <strong>Đại học HUTECH</strong>
+                </div>
+                <div class="info-card">
+                    <span>Ngày sinh</span>
+                    <strong>14/10/2004</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="panel">
+                <h2>Giới thiệu bản thân</h2>
+                <p>
+                    Mình có niềm đam mê mạnh mẽ với phát triển phần mềm, đặc biệt là xây dựng các ứng dụng web có
+                    giao diện trực quan và luồng xử lý dữ liệu rõ ràng. Trong quá trình học tập, mình chủ động tham gia
+                    các đồ án nhóm, nơi mình rèn luyện kỹ năng giao tiếp kỹ thuật, quản lý tiến độ và xử lý vấn đề khi
+                    dự án gặp áp lực thời gian.
+                </p>
+                <p style="margin-top: 12px;">
+                    Ngoài kiến thức trên lớp, mình thường tự học qua tài liệu chính thức, thực hành mini project và đọc
+                    mã nguồn mở để cải thiện tư duy lập trình. Mục tiêu của mình không chỉ là viết code chạy được,
+                    mà còn viết code sạch, có kiểm thử và dễ bảo trì trong dài hạn.
+                </p>
+
+                <div class="skills">
+                    <span class="chip">Java</span>
+                    <span class="chip">Spring Boot</span>
+                    <span class="chip">HTML/CSS</span>
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">MySQL</span>
+                    <span class="chip">Git & GitHub</span>
+                </div>
+
+                <h2 style="margin-top: 24px;">Hành trình phát triển</h2>
+                <ul class="timeline">
+                    <li>
+                        Hoàn thành các môn nền tảng về cấu trúc dữ liệu, giải thuật và lập trình hướng đối tượng,
+                        tạo nền tảng tốt cho việc xây dựng ứng dụng thực tế.
+                    </li>
+                    <li>
+                        Thực hiện nhiều bài tập lớn sử dụng Java và Spring Boot, tập trung vào thiết kế API,
+                        kết nối cơ sở dữ liệu và tổ chức code theo mô hình chuẩn.
+                    </li>
+                    <li>
+                        Cải thiện kỹ năng front-end để tạo giao diện rõ ràng, responsive và tối ưu trải nghiệm trên
+                        cả desktop lẫn mobile.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="side-stack">
+                <div class="panel">
+                    <h2>Mục tiêu gần nhất</h2>
+                    <p>
+                        Trong 12 tháng tới, mình muốn hoàn thiện một portfolio cá nhân với các dự án thực chiến,
+                        đặc biệt là ứng dụng quản lý sinh viên và hệ thống đặt lịch có phân quyền người dùng.
+                    </p>
+                    <div class="quote">
+                        "Mỗi dòng code đúng hôm nay sẽ tiết kiệm rất nhiều giờ sửa lỗi cho ngày mai."
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h2>Liên hệ & sở thích</h2>
+                    <ul class="contacts">
+                        <li><strong>Email:</strong> letanlochhgg@gmail.com</li>
+                        <li><strong>Định hướng:</strong> Full-Stack / Backend Java</li>
+                        <li><strong>Sở thích:</strong> Code challenge, đọc sách công nghệ, bóng đá</li>
+                        <li><strong>Phong cách làm việc:</strong> Kỷ luật, chủ động, tôn trọng teamwork</li>
+                    </ul>
+                    <a href="/" class="back-btn">Quay lại trang chủ</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
