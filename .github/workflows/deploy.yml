@@ -34,5 +34,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/demo_bai_7:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/demo_bai_7:${{ github.sha }}
+            ${{ secrets.USERNAME }}/demo_bai_7:latest
+            ${{ secrets.USERNAME }}/demo_bai_7:${{ github.sha }}
